@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap');
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --border-color: #333333;
+}
+
+body{
+  font-size: 16px;
+  background-color: #f5f5f5;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.age-app{
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 10px 20px -18px;
+}
+
+.app-header{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.app-body{
+  padding: 16px;
+  background-color: #fff;
+}
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+.container .container-header{
+  color: #242424;
+  margin-bottom: 8px;
+}
+
+.container .container-body{
+  display: flex;
+  align-items: center;
+}
+
+
+.container .container-body .input-container{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.container-body input[type="number"] {
+  outline: 1px solid lightgrey;
+  background-color: #fff;
+  color: #242424;
+  padding: 8px 12px;
+  min-height: 40px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  /* box-shadow: 0px 10px 20px -18px; */
+}
+
+.container-body input[type="number"]:focus {
+  border-bottom: 2px solid #5b5fc7;
+  border-radius: 4px 4px 2px 2px;
+}
+
+.container-body input[type="number"]:hover {
+  outline: 1px solid lightgrey;
+}
+
+.input-container .dateValue,
+.input-container .monthValue {
+  width: 100px;
+  margin-right: 16px;
+}
+
+.input-container .yearValue {
+  width: 150px;
+}
+
+.app-footer{
+  padding: 16px;
+}
+
+.btn-container{
+  /* margin-left: auto; */
+  display: flex;
+}
+
+.btn {
+  /* width: 100px; */
+  width: 50%;
+  margin-left: auto;
+  min-height: 40px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid;
+  box-shadow: 0px 0px 20px -20px;
+  cursor: pointer;
+  background-color: white;
+  transition: all 0.2s ease-in-out 0ms;
+  user-select: none;
+  font-weight: normal;
+  font-weight: 16px;
+  letter-spacing: 0.2px;
+}
+
+.resetBtn{
+  border-color: rgb(164, 45, 45);
+  margin-right: 8px;
+}
+
+.resetBtn:hover{
+  background-color: rgb(164, 45, 45);
+  color: white;
+  box-shadow: 0px 0px 20px -18px;
+}
+
+.submitBtn{
+  border-color: #5b5fc7;
+  background-color: #5b5fc7;
+  color: white;
+}
+
+.submitBtn:hover {
+  background-color: #6f73e4;
+  box-shadow: 0px 0px 20px -18px;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.app-results{
+  padding: 16px;
+  border-top: 1px solid var(--border-color);
+}
