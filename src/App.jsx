@@ -1,97 +1,209 @@
 import { useState } from 'react';
+
 import './App.css'
+import MemberCard from './MemberCard';
 
 function App() {
 
-  const [birthDate, setBirthDate] = useState(0);
-  const [dateValue, setDateValue] = useState(0);
-  const [monthValue, setMonthValue] = useState(0);
-  const [yearValue, setYearValue] = useState(0);
-
-  const validateDateChange = event =>{
-    const datevalue = Math.max(1, Math.min(31, Number(event.target.value)))
-    setDateValue(datevalue);
-  }
-
-  const validateMonthChange = event =>{
-    const monthvalue = Math.max(1, Math.min(12, Number(event.target.value)))
-    setMonthValue(monthvalue);
-  }
-
-  const validateYearChange = event =>{
-    const yearvalue = Number(event.target.value);
-    setYearValue(yearvalue);
-  }
-
-  const submitForm = () => {
-    var submitBirthdate = new Date(monthValue+'/'+dateValue+'/'+yearValue);
-    setBirthDate(submitBirthdate);
-  }
-
-  // const resetForm = () => {
-  //   setDateValue(0);
-  //   setMonthValue(0);
-  //   setYearValue(0);
-  // }
+  const [dateValue, setDateValue] = useState("");
+  const [monthValue, setMonthValue] = useState("");
+  const [yearValue, setYearValue] = useState("");
   
+  // const [calculatedAge, setCalculatedAge] = useState("");
+  const [calculatedYears, setCalculatedYears] = useState("");
+  const [calculatedMonths, setCalculatedMonths] = useState("");
+  const [calculatedDays, setCalculatedDays] = useState("");
+  
+  const [showModal, setShowModal] = useState(false);
+  
+  var userName;
+  var userBirthDate;
   const today = new Date();
-  // const todaysDate = today.toDateString();
-  const diffTime = Math.abs(today - birthDate);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
 
-  const calculatedAge = getFormatedStringFromDays(diffDays);
+  //! Issue if no array found it throws an json error 
+  // Todo: check if no array found in LS delete "members_list" array from LS
 
+
+  // If localstorage has data then pass the array to membersList or create an empty array
+  var membersList = JSON.parse(localStorage.getItem("members_list")) || [];
+
+  // Adds user to members array
+  const submitUser = () => {
+  
+    userName = document.getElementById("userName").value;
+    userBirthDate = document.getElementById("userBirthDate").value;
+
+    if(userName === "" || userName === null){
+      alert("Please enter Name of the person you want to add");
+    }else if(userBirthDate === ""){
+      alert("Please enter a valid date")
+    }else{
+      var submitBirthdate = new Date(userBirthDate);
+      const diffTime = Math.abs(today - submitBirthdate.getTime());
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+      const userYears = Math.floor(diffDays / 365);
+      const userMonths = Math.floor(diffDays % 365 / 30);
+      const userDays = Math.floor(diffDays % 365 % 30);
+
+      var idNum = membersList.length;
+     
+      var member = { id: idNum, userName: userName, userBirthDate: userBirthDate, userYears: userYears, userMonths: userMonths, userDays: userDays}
+
+      membersList.push(member);
+      localStorage.setItem("members_list", JSON.stringify(membersList));
+      alert(userName + " Added to list");
+      setShowModal(false);
+
+    }
+  }
+
+  // method to remove user
+  const removeUser = (event) => {
+    // alert("Remove");
+    var removeId = event.target.parentNode.parentNode.getAttribute("id");
+    var removeMemberName = membersList.find((member) => member.id == removeId);
+    removeMemberName = removeMemberName.userName;
+    var confirmMsg = confirm(`Do you want to remove ${removeMemberName} ?\n this cannot be undone`);
+    if(confirmMsg){
+      membersList = membersList.filter((member) => member.id != removeId);
+      localStorage.setItem("members_list", JSON.stringify(membersList));
+      window.location.reload();
+    }else{
+      return
+    }
+  }
+
+  // Gets total number of days from subtracting time now by birthdate then dividing it by (1000 * 60 * 60 * 24)
+  const calculateAge = () => {
+
+    const today = new Date();
+    var submitBirthdate = new Date(`${yearValue}-${monthValue}-${dateValue}`);
+
+    const diffTime = Math.abs(today - submitBirthdate.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+    getFormatedStringFromDays(diffDays);
+  }
+
+  // Get years months and days by total number of days
   function getFormatedStringFromDays(numberOfDays) {
-    var years = Math.floor(numberOfDays / 365);
-    var months = Math.floor(numberOfDays % 365 / 30);
-    var days = Math.floor(numberOfDays % 365 % 30);
+    setCalculatedYears(Math.floor(numberOfDays / 365));
+    setCalculatedMonths(Math.floor(numberOfDays % 365 / 30));
+    setCalculatedDays(Math.floor(numberOfDays % 365 % 30));
+  }
 
-    years = years + " years";
-    months = months + " months";
-    days = days + " days";
+  // Clears form 
+  const resetForm = () => {
+    setDateValue("");
+    setMonthValue("");
+    setYearValue("");
+    setCalculatedYears("");
+    setCalculatedMonths("");
+    setCalculatedDays("");
+  }
 
-    return [years, months, days].join(' ');
+  // Show and hide modal
+  const modalToggle = () => {
+    setShowModal((currentValue) => !currentValue)
   }
 
   return (
-    <section className='wrapper'>
-      <div className='age-app'>
-        <div className="app-header">
-          <h2>Age Calculator</h2>
-        </div>
+    <>
+      <section className='wrapper'>
+      
+        <div className='age-app'>
 
-        <div className="app-body">
-          <div className='container'>
-            <span className="container-header">Date of Birth</span>
-            <div className="container-body">
-              <div className="input-container">
-                <input type="number" placeholder='Date' className='dateValue' onChange={validateDateChange} />
-              </div>
-              <div className="input-container">
-                <input type="number" placeholder='Month' className='monthValue' onChange={validateMonthChange} />
-              </div>
-              <div className="input-container">
-                <input type="number" placeholder='Year' className='yearValue' onChange={validateYearChange} />
+          {/* App logo and a button to add a member */}
+          <div className="app-header">
+            <h2>Age Calculator</h2>
+            <button className='btn addMemberBtn' onClick={modalToggle}>Add Member</button>
+          </div>
+
+          {/* Input field container */}
+          <div className="app-body">
+            <div className='container'>
+              <span className="container-header">Date of Birth</span>
+              <div className="container-body">
+                <div className="input-container">
+                  <input type="number" placeholder='Date' value={dateValue} className='dateValue' onChange={(e)=> setDateValue(e.target.value)}  />
+                </div>
+                <div className="input-container">
+                  <input type="number" placeholder='Month' value={monthValue} className='monthValue' onChange={(e)=> setMonthValue(e.target.value)}  />
+                </div>
+                <div className="input-container">
+                  <input type="number" placeholder='Year' value={yearValue} className='yearValue' onChange={(e)=> setYearValue(e.target.value)}  />
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Button container */}
+          <div className="app-footer">
+            <div className="btn-container">
+              {dateValue || monthValue || yearValue ? <button className='btn resetBtn' onClick={resetForm}>Reset</button> : ""}
+              <button className='btn submitBtn' onClick={calculateAge}>Calculate</button>
+            </div>
+          </div>
+
+          {/* Displays your age */}
+          <div className="app-results">
+            <div className="results">
+              <article className="result-article year-container">
+                <h3>{calculatedYears ? calculatedYears : "0"} </h3><span>Years</span>
+              </article>
+              <article className="result-article month-container">
+                <h3>{calculatedMonths ? calculatedMonths : "0"} </h3><span>Months</span>
+              </article>
+              <article className="result-article year-container">
+                <h3>{calculatedDays ? calculatedDays : "0"} </h3><span>days old</span>
+              </article>
+            </div>
+          </div> 
+
         </div>
 
-        <div className="app-footer">
-          <div className="btn-container">
-            {/* <button className='btn resetBtn' onClick={resetForm}>Reset</button> */}
-            <button className='btn submitBtn' onClick={() => submitForm()}>Calculate</button>
-          </div>
+        {/* Display members if any */}
+        <div className='members-wrapper'>
+          {/* Adds member card */}
+          {membersList?.map((member, id) => (
+            <MemberCard 
+              key={id} 
+              id={member?.id}
+              clickEvent={removeUser}
+              username={member?.userName} 
+              userYears={member?.userYears}
+              userMonths={member?.userMonths}
+              userDays={member?.userDays}
+            />
+          ))}
         </div>
 
-        <div className="app-results">
-          <div className="results">
-            <h3>You are {calculatedAge} old</h3>
-          </div>
+      </section>
+
+      {/* Add Member Modal */}
+      {showModal && 
+        <div className={`modal-wrapper ${showModal ? "modalActive" : ""}`}>
+          <modal className="modal">
+            <div className="modal-header">
+              <h2>Add member</h2>
+              <button className='btn addMemberBtn' onClick={modalToggle}>Close</button>
+            </div>
+            <div className="modal-body">
+              <div className="modal-input-container">
+                <input type="text" placeholder='Name' id='userName' />
+              </div>
+              <div className="modal-input-container">
+                <input type="date" placeholder='Birth Date' id='userBirthDate' />
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className='btn submitUserBtn' onClick={submitUser}>Add</button>
+            </div>
+          </modal>
         </div>
-     
-      </div>
-    </section>
+      }
+    
+    </>
   )
 }
 

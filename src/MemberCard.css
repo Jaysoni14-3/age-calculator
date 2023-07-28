@@ -1,0 +1,54 @@
+.member-card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background: #ffffff;
+    margin-bottom: 8px;
+    width: 100%;
+    min-height: 200px;
+    
+    
+    box-shadow: 8px 8px 16px #cecece,
+                -8px -8px 16px #ffffff;
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: auto;
+    border-bottom: 1px solid black;
+    padding: 16px;
+}
+
+
+.delete-user-btn{
+    border-radius: 50%;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    outline: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    transition: all 0.2s ease-in-out 0ms;
+    user-select: none;
+    font-weight: normal;
+
+}
+
+.delete-user-btn:hover{
+    color: white;
+    background-color: #1a1a1a;
+}
+
+.card-body{
+    padding: 16px;
+}
+
+
+/* @media screen and (min-width: 768px) {
+
+} */
