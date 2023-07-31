@@ -1,0 +1,209 @@
+.bmi-wrapper{
+    margin: 0 auto;
+    max-width: 450px;
+    width: 100%;
+}
+
+.bmi-app{
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 10px 20px -18px;
+    margin-inline: 16px;
+    margin-top: 16px;
+    
+  }
+
+
+  .bmi-app input[type="number"] {
+    outline: 1px solid lightgrey;
+    background-color: #fff;
+    color: #5c5c5c;
+    padding: 8px 12px;
+    min-height: 40px;
+    border-radius: 4px;
+    border: none;
+    font-size: 24px;
+  }
+    .bmi-app input[type="number"]::placeholder{
+        font-size: 16px;
+    }
+  
+    .bmi-app input[type="number"]:focus {
+      /* border-bottom: 2px solid #5b5fc7; */
+      box-shadow: 0 2px 0 0px #5b5fc7;
+      border-radius: 4px 4px 2px 2px;
+    }
+  
+    .bmi-app input[type="number"]:hover {
+      outline: 1px solid #a0a0a0;
+    }
+
+  
+  .bmi-app-header{
+    display: flex;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .bmi-app-body{
+    padding: 16px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bmi-app-body .height-container,
+  .bmi-app-body .weight-container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+
+  .bmi-app-body .height-container > label,
+  .bmi-app-body .weight-container > label{
+    margin-bottom: 4px;
+  }
+
+  .bmi-app-body .height-container div{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .bmi-app-body .height-container div input{
+        margin-bottom: 4px;
+    }
+
+  .bmi-app-body .height-container{
+    margin-right: 16px;
+  }
+  
+    .bmi-app-body .height-input{
+        width: 100px;
+    }
+
+        .bmi-app-body .height-input:first-child{
+            margin-right: 8px;
+        }
+  
+  .bmi-app-body .weight-input {
+    width: 100%;
+  }
+  
+  .bmi-app-footer{
+    padding: 16px;
+    padding-top: 0px;
+  }
+  
+  .btn-container{
+    display: flex;
+  }
+  
+  .btn {
+    /* width: 100px; */
+    width: 50%;
+    margin-left: auto;
+    min-height: 40px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid;
+    box-shadow: 0px 0px 20px -20px;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.2s ease-in-out 0ms;
+    user-select: none;
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+  }
+  
+    .btn:active {
+      transform: scale(0.95);
+    }
+  
+  .resetBtn{
+    border-color: rgb(164, 45, 45);
+    margin-right: 8px;
+  }
+  
+    .resetBtn:hover{
+      background-color: rgb(164, 45, 45);
+      color: white;
+      box-shadow: 0px 0px 20px -18px;
+    }
+  
+  .submitBtn{
+    border-color: #5b5fc7;
+    background-color: #5b5fc7;
+    color: white;
+  }
+  
+    .submitBtn:hover {
+      background-color: #6f73e4;
+      box-shadow: 0px 0px 20px -18px;
+    }
+  
+  
+.bmi-app-results{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+}
+
+    .bmi-app-results p{
+        color: #5c5c5c;
+    }
+    .bmi-app-results h2{
+        color: #233253;
+        font-size: 32px;
+        font-weight: 600;
+    }
+    .bmi-app-results span{
+        font-size: 18px;
+        font-weight: black;
+    }
+
+    .yellow{
+      color: rgb(255, 236, 61);
+    }
+    .green{
+      color: rgb(75, 177, 82);
+    }
+    .orange{
+      color: rgb(255, 165, 0);
+    }
+    .red{
+      color: rgb(255, 34, 34);
+    }
+  
+
+
+@media screen and (max-width: 375px) {
+    .result-article{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .bmi-app-body .height-container div{
+        flex-wrap: nowrap;
+    }
+        
+    .bmi-app-body .height-container div input{
+        margin-bottom: 0;
+    }
+}
+
+
+@media screen and (min-width: 425px) {
+    .bmi-app-body .weight-height-container{
+        display: flex;
+    }
+   
+}
+
