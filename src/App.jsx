@@ -10,6 +10,7 @@ function App() {
     <>
       <BrowserRouter >
         <Routes>
+          {/* Router error  */}
           <Route index path='/' element={<Home />} />
           <Route path='/age-calculator' element={<AgeCalculator />} />
           <Route path='/bmi-calculator' element={<BmiCalculator />} />
