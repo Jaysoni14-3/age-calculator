@@ -1,4 +1,5 @@
-
+import AgeCalculatorImage from '../../images/age-calculator.png'
+import BmiCalculatorImage from '../../images/BMI-calculator.png'
 import "./Home.css"
 
 export default function Home (){
@@ -9,7 +10,7 @@ export default function Home (){
                 <a href="/age-calculator">
                     <article className="home-article">
                         <div className="image-container">
-                            <img src="../../images/age-calculator.png" alt="age calculator" />
+                            <img src={AgeCalculatorImage} alt="age calculator" />
                         </div>
                         <div className="article-description">
                             <h2 className="article-name">Age Calculator</h2>
@@ -20,7 +21,7 @@ export default function Home (){
                 <a href="/bmi-calculator">
                     <article className="home-article">
                         <div className="image-container">
-                            <img src="../../images/BMI-calculator.png" alt="BMI calculator" />
+                            <img src={BmiCalculatorImage} alt="BMI calculator" />
                         </div>
                         <div className="article-description">
                             <h2 className="article-name">BMI Calculator</h2>
