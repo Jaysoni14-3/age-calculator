@@ -1,0 +1,118 @@
+.currency-converter-wrapper{
+    margin: 0 auto;
+    max-width: 450px;
+    width: 100%;
+}
+
+.currency-converter-app{
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 10px 20px -18px;
+    margin-inline: 16px;
+    margin-top: 16px;
+  }
+
+.currency-converter-app-header{
+    display: flex;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.currency-converter-app-body{
+    padding: 16px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.currency-selector{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 16px;
+}
+
+.currency-converter-app label{
+    color: #5c5c5c;
+    user-select: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.currency-from,
+.currency-to{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.currency-selector select{
+    width: 100%; 
+    padding: 8px;
+    border-radius: 8px;
+    border: 0;
+    outline: 1px solid lightgrey;
+    background-color: #fff;
+}
+
+.currency-selector select:focus {
+    box-shadow: 0 2px 0 0px #5b5fc7;
+    border-radius: 4px 4px 2px 2px;
+}
+
+.currency-selector .currency-from{
+    margin-right: 4px;
+}
+.currency-selector .currency-to{
+    margin-left: 4px;
+}
+
+.ammount-selector input{
+    width: 100%;
+    border-radius: 8px;
+    outline: 1px solid lightgrey;
+    background-color: #fff;
+    color: #5c5c5c;
+    padding: 8px 12px;
+    border: none;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.ammount-selector input:focus {
+    box-shadow: 0 2px 0 0px #5b5fc7;
+    border-radius: 4px 4px 2px 2px;
+}
+
+.button-container {
+    margin: 0 auto;
+}
+
+.btn {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid;
+    box-shadow: 0px 0px 20px -20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out 0ms;
+    user-select: none;
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    border-color: #5b5fc7;
+    background-color: #5b5fc7;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #6f73e4;
+    box-shadow: 0px 0px 20px -18px;
+}

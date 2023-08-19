@@ -4,6 +4,7 @@ import AgeCalculator from './Pages/AgeCalculator'
 import BmiCalculator from './Pages/BmiCalculator'
 import Home from './Pages/Home'
 import Calculator from './Pages/Calculator'
+import CurrencyConverter from './Pages/CurrencyConverter'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/age-calculator' element={<AgeCalculator />} />
           <Route path='/bmi-calculator' element={<BmiCalculator />} />
           <Route path='/calculator' element={<Calculator />} />
+          <Route path='/currency-converter' element={<CurrencyConverter />} />
         </Routes>
       </BrowserRouter>
     </>
