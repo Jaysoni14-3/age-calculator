@@ -1,7 +1,7 @@
 import AgeCalculatorImage from '../../images/age-calculator.png'
 import BmiCalculatorImage from '../../images/BMI-calculator.png'
-import CalculatorImage from '../../images/Calculator.png'
-import CurrencyConverter from '../../images/Currency-Converter.png'
+import CalculatorImage from '../../images/calculator.png'
+import CurrencyConverter from '../../images/currency-converter.png'
 import "./Home.css"
 
 export default function Home (){
