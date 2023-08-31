@@ -8,6 +8,8 @@ export default function BmiCalculator() {
     const [userWeight, setUserWeight] = useState("");
     const [userBMI, setUserBMI] = useState("");
 
+    document.title = "BMI Calculator";
+
     var bmiMessage;
     var bmi_message_style;
 

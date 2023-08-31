@@ -1,9 +1,13 @@
 import AgeCalculatorImage from '../../images/age-calculator.png'
 import BmiCalculatorImage from '../../images/BMI-calculator.png'
 import CalculatorImage from '../../images/Calculator.png'
+import CurrencyConverter from '../../images/Currency-Converter.png'
 import "./Home.css"
 
 export default function Home (){
+
+    document.title = "Calculators";
+
     return (
         <>
             <div className="home-page">
@@ -44,7 +48,7 @@ export default function Home (){
                 <a href="/currency-converter">
                     <article className="home-article">
                         <div className="image-container">
-                            <img src={AgeCalculatorImage} alt="AgeCalculatorImage" />
+                            <img src={CurrencyConverter} alt="CurrencyConverterImage" />
                         </div>
                         <div className="article-description">
                             <h2 className="article-name">Currency Converter</h2>

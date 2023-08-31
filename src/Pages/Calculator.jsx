@@ -11,6 +11,8 @@ export const ACTIONS = {
     EVALUATE: 'evaluate',
 }
 
+document.title = "Calculator";
+
 function reducer(state, { type, payload }) {
     switch (type){
         // Add digits you want to calculate with

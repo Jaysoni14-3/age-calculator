@@ -15,6 +15,8 @@ function AgeCalculator() {
   const [calculatedDays, setCalculatedDays] = useState("");
   
   const [showModal, setShowModal] = useState(false);
+
+  document.title = "Age Calculator";
   
   var userName;
   var userBirthDate;

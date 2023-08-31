@@ -10,6 +10,8 @@ export default function CurrencyConverter () {
     const [currencyFromValue, setCurrencyFromValue] = useState("");
     const [currencyToValue, setCurrencyToValue] = useState("");
 
+    document.title = "Currency Converter";
+
     const getApiData = (wantValue, haveValue, ammountValue) => {
         fetch(`https://api.api-ninjas.com/v1/convertcurrency?want=${wantValue}&have=${haveValue}&amount=${ammountValue}`, {
             method: "GET",

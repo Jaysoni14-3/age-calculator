@@ -10,23 +10,24 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .home-article{
     width: 100%;
     margin-inline: auto;
-    /* outline: 1px solid #5c5c5c; */
     border-radius: 8px;
     background-color: #fff;
     transition: all 0.2s ease;
+    /* outline: 1px solid #5c5c5c; */
     /* box-shadow: 0 8px 0 0px #5b5fc7; */
     box-shadow: 4px 8px 0 0px #8589ff;
     overflow: hidden;
+    margin-top: 24px;
 }
 
-.home-article:last-child{
-    margin-top: 24px;
+.home-page:last-child{
+    margin-bottom: 24px;
 }
 
 .home-article .image-container{
